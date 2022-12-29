@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Não Funciona</a></p>
+        <p><a v-bind:href="link">Link Funciona</a></p><!--diretivas-->
+        <p><a :href="link">link Funciona Tambem</a></p><!--Forma reduzida -->
+        <p>
+        <input type="text" v-model="nome"></br>
+            <span>{{nome}}</span></br><!--Atualiza em 2 direções-->
+
+            <input type="text" :value="nome2"><br><!--não atualiza 2 direcoes-->
+            <span>{{nome2}}</span>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                nome: "Maria",
+                nome2: "João",
+                link: "https://youtube.com/cod3rcursos"
+            },
+            watch: {
+                nome(novoValor){
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>
